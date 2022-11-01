@@ -27,7 +27,7 @@ namespace Footkin.Base
         private void Update()
         {
             // Gravity + ground ray
-            if (Physics.Raycast(this.transform.position, Vector3.down, out RaycastHit hit, 1.1f, ~6))
+            if (Physics.Raycast(this.transform.position, Vector3.down, out RaycastHit hit, 1.1f, 1 << 7))
             {
                 if (!movementDirection[2])
                 {
@@ -68,14 +68,50 @@ namespace Footkin.Base
             {
                 direction.x = Mathf.Lerp(direction.x, 0f, characterData.Speed * Time.deltaTime);
             }           
-
+            
             // Perform movement to direction
             characterController.Move(direction * Time.deltaTime * characterData.Speed);
         }
 
-        public void OnMoveRight(InputAction.CallbackContext context) => _ = context.performed == true ? movementDirection[1] = true : movementDirection[1] = false;
+        public void OnMoveRight(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+            {
+                movementDirection[1] = true;
+                return;
+            }
+            movementDirection[1] = false;
+        }
 
-        public void OnMoveLeft(InputAction.CallbackContext context) => _ = context.performed == true ? movementDirection[0] = true : movementDirection[0] = false;
+        public void OnMoveRight(bool performed)
+        {
+            if (performed)
+            {
+                movementDirection[1] = true;
+                return;
+            }
+            movementDirection[1] = false;
+        }
+
+        public void OnMoveLeft(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+            {
+                movementDirection[0] = true;
+                return;
+            }
+            movementDirection[0] = false;
+        }
+
+        public void OnMoveLeft(bool performed)
+        {
+            if (performed)
+            {
+                movementDirection[0] = true;
+                return;
+            }
+            movementDirection[0] = false;
+        }
 
         public void OnMoveJump(InputAction.CallbackContext context)
         {
