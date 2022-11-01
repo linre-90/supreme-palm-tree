@@ -19,7 +19,6 @@ namespace Footkin.Controller
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("asdasd");
             enemies.Add(other.gameObject);
         }
 
@@ -42,9 +41,13 @@ namespace Footkin.Controller
         {
             foreach (GameObject enemy in enemies)
             {
-                enemy.GetComponent<EnemyController>().ReceiveDamage(damageData.HitPoints);
+                // Expert error handling for null reference....
+                try
+                {
+                    enemy.GetComponent<EnemyController>().ReceiveDamage(damageData.HitPoints);
+                }
+                catch (System.Exception){}
             }
         }
-
     } 
 }
