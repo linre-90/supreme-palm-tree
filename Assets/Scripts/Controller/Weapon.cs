@@ -1,3 +1,4 @@
+using Footkin.Base;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,17 +20,23 @@ namespace Footkin.Controller
 
         private void OnTriggerEnter(Collider other)
         {
-            enemies.Add(other.gameObject);
+            if (other.CompareTag(damageData.targetTag))
+            {
+                enemies.Add(other.gameObject);
+            }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            try
+
+            if (other.CompareTag(damageData.targetTag))
             {
-                enemies.Remove(other.gameObject);
+                try
+                {
+                    enemies.Remove(other.gameObject);
+                }
+                catch (System.Exception) { }
             }
-            catch (System.Exception){}
-            
         }
 
         public void AttackEnemy()
@@ -39,14 +46,18 @@ namespace Footkin.Controller
 
         private void DoDamage()
         {
-            foreach (GameObject enemy in enemies)
+            if(enemies.Count > 0)
             {
-                // Expert error handling for null reference....
-                try
+                // TODO call attack animation
+                foreach (GameObject enemy in enemies)
                 {
-                    enemy.GetComponent<EnemyController>().ReceiveDamage(damageData.HitPoints);
+                    // Expert error handling for null reference....
+                    try
+                    {
+                        enemy.gameObject.GetComponent<Character>().ReceiveDamage(damageData.HitPoints);
+                    }
+                    catch (System.Exception) { }
                 }
-                catch (System.Exception){}
             }
         }
     } 

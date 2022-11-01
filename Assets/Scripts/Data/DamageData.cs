@@ -8,5 +8,5 @@ public class DamageData : ScriptableObject
 {
     public int HitPoints;
     public float cooldown;
-
+    public string targetTag;
 }

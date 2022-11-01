@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: CharacterRanged
   m_EditorClassIdentifier: 
   HitPoints: 34
+  cooldown: 0
+  targetTag: Enemy

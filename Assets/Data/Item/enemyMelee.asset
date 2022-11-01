@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f80a2fabac06dfc498046563c63228fd, type: 3}
-  m_Name: CharacterMelee
+  m_Name: enemyMelee
   m_EditorClassIdentifier: 
   HitPoints: 34
   cooldown: 0
-  targetTag: Enemy
+  targetTag: Player

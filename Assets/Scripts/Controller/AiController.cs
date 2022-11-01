@@ -13,34 +13,31 @@ namespace Footkin.Controller
     {
         bool followPlayer;
         Vector3 detectionPosition;
-        Vector3 orgPosition;
 
         [SerializeField]
         EnemyMove enemyMove;
 
-        private void Awake()
-        {
-            orgPosition = transform.position;
-        }
+        [SerializeField]
+        Attack attack;
 
         private void Update()
         {
             if (followPlayer)
             {
                 // Follow to right
-                if(detectionPosition.x >= orgPosition.x)
+                if(detectionPosition.x >= transform.position.x)
                 {
                     enemyMove.OnMoveRight(true);
                 }
 
-                if (detectionPosition.x < orgPosition.x)
+                if (detectionPosition.x < transform.position.x)
                 {
                     enemyMove.OnMoveLeft(true);
                 }
                 followPlayer = false;
             }
+            attack.OnMeleeAttack();
         }
-
 
         public void SetPlayerDetected(Vector3 detectedPosition)
         {
