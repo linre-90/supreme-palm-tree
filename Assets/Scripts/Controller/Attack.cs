@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Footkin.Common;
 
 namespace Footkin.Controller
 {
@@ -13,10 +12,9 @@ namespace Footkin.Controller
 
         public void OnRangedAttack(InputAction.CallbackContext context)
         {
-            
             if (context.performed)
             {
-                Debug.Log("Performing ranged attack");
+                rangedWeapon.AttackEnemy();
             }
         }
 
@@ -24,7 +22,7 @@ namespace Footkin.Controller
         {
             if (context.performed)
             {
-                Debug.Log("Performing melee attack");
+                rangedWeapon.AttackEnemy();
             }
         }
     } 

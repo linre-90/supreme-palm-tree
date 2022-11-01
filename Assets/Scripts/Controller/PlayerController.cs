@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Footkin.Base;
-using Footkin.Controller;
 
 namespace Footkin.Controller
 {
@@ -11,20 +10,36 @@ namespace Footkin.Controller
         PlayerMove playerMove;
         PlayerAttack playerAttack;
 
+        int health;
+        bool inputAlreadyUnbind = false;
+
+        public override void ReceiveDamage(int damage)
+        {
+            health -= damage;
+            if(health <= 0)
+            {
+                playerAttack.UnBindInput();
+                playerMove.UnBindInput();
+                Debug.Log("TODO: Show again quit button");
+            }
+        }
+
         private void Awake()
         {
             playerMove = GetComponent<PlayerMove>();
             playerMove.BindInput();
             playerAttack = GetComponent<PlayerAttack>();
             playerAttack.BindInput();
+            health = characterData.Health;
         }
 
         private void OnDestroy()
         {
-            playerMove.UnBindInput();
-            playerAttack.UnBindInput();
+            if (!inputAlreadyUnbind)
+            {
+                playerMove.UnBindInput();
+                playerAttack.UnBindInput();
+            }
         }
-
-
     }
 }
