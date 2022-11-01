@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2278448121271836143}
   - component: {fileID: 2278448121271836142}
-  - component: {fileID: 6554658599029005363}
-  m_Layer: 0
+  - component: {fileID: 871001894744082180}
+  m_Layer: 8
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageData: {fileID: 0}
---- !u!65 &6554658599029005363
+--- !u!65 &871001894744082180
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

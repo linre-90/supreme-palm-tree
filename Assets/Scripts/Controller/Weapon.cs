@@ -19,6 +19,7 @@ namespace Footkin.Controller
 
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log("asdasd");
             enemies.Add(other.gameObject);
         }
 

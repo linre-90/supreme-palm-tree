@@ -9,6 +9,7 @@ namespace Footkin.Controller
     {
         PlayerMove playerMove;
         PlayerAttack playerAttack;
+        
 
         int health;
         bool inputAlreadyUnbind = false;

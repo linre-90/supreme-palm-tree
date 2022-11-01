@@ -14,6 +14,8 @@ namespace Footkin.Controller
         InputAction moveRight;
         InputAction jump;
 
+
+
         public void BindInput()
         {
             this.playerInput = GetComponent<PlayerInput>();
