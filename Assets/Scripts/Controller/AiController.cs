@@ -36,6 +36,7 @@ namespace Footkin.Controller
                 }
                 followPlayer = false;
             }
+            // Todo raycast
             attack.OnMeleeAttack();
         }
 
