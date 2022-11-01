@@ -50,7 +50,7 @@ namespace Footkin.Base
                 direction.y = Mathf.Lerp(direction.y, 1f, characterData.jumpForce);
             }
 
-            // Movement left right
+            // Movement left right and reset
             if (movementDirection[0])
             {
                 direction.x = Mathf.Lerp(direction.x, -1f, characterData.Speed * Time.deltaTime);
@@ -64,7 +64,7 @@ namespace Footkin.Base
                 direction.x = Mathf.Lerp(direction.x, 0f, characterData.Speed * Time.deltaTime);
             }           
 
-            // Perform movement 
+            // Perform movement to direction
             characterController.Move(direction * Time.deltaTime * characterData.Speed);
         }
 
