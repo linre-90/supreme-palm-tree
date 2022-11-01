@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Footkin.Base;
 using UnityEngine.InputSystem;
+using Footkin.Common;
 
 namespace Footkin.Controller
 {
-    public class PlayerMove : Move
+    public class PlayerMove : Move, IInputHandler
     {
         PlayerInput playerInput;
         InputAction moveLeft;
