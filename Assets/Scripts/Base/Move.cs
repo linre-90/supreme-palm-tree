@@ -9,7 +9,11 @@ namespace Footkin.Base
         Vector3 direction;
         CharacterController characterController;
         bool grounded;
-        bool isJumping;
+
+        /// <summary>
+        /// 0:Left, 1:right, 2:jump
+        /// </summary>
+        bool[] movementDirection = new bool[] { false, false, false };
 
         private void Awake()
         {
@@ -19,18 +23,10 @@ namespace Footkin.Base
 
         private void Update()
         {
-            // Perform movement before gravity calculations
-            characterController.Move(direction * Time.deltaTime * characterData.Speed);
-            if (isJumping)
-            {
-                direction.y += 1f * characterData.jumpForce;
-            }
-            
-
             // Gravity + ground ray
             if (Physics.Raycast(this.transform.position, Vector3.down, out RaycastHit hit, 1.1f, ~6))
             {
-                if (!isJumping)
+                if (!movementDirection[2])
                 {
                     direction.y = 0f;
                     grounded = true;
@@ -41,47 +37,47 @@ namespace Footkin.Base
                 // Apply gravity
                 grounded = false;
                 direction.y += Physics.gravity.y * Time.deltaTime * characterData.GravityMultiplayer;
+            }            
+
+            // reached jump top height point
+            if (movementDirection[2] && direction.y > .95f)
+            {
+               
+                movementDirection[2] = false;
+            }
+            else if (movementDirection[2])
+            {
+                direction.y = Mathf.Lerp(direction.y, 1f, characterData.jumpForce);
             }
 
-            // After jump boost set jumping false
-            isJumping = false;
+            // Movement left right
+            if (movementDirection[0])
+            {
+                direction.x = Mathf.Lerp(direction.x, -1f, characterData.Speed * Time.deltaTime);
+            }
+            else if (movementDirection[1])
+            {
+                direction.x = Mathf.Lerp(direction.x, 1f, characterData.Speed * Time.deltaTime);
+            }
+            else
+            {
+                direction.x = Mathf.Lerp(direction.x, 0f, characterData.Speed * Time.deltaTime);
+            }           
+
+            // Perform movement 
+            characterController.Move(direction * Time.deltaTime * characterData.Speed);
         }
 
-        public void OnMoveRight(InputAction.CallbackContext context)
-        {
-            if (context.performed)
-            {
-                direction.x = 1;
-                return;
-            }
+        public void OnMoveRight(InputAction.CallbackContext context) => _ = context.performed == true ? movementDirection[1] = true : movementDirection[1] = false;
 
-            if(direction.x == 1)
-            {
-                direction.x -= 1;
-            }
-        }
-
-        public void OnMoveLeft(InputAction.CallbackContext context)
-        {
-            
-            if (context.performed)
-            {
-                direction.x = -1;
-                return;
-            }
-
-            if (direction.x == -1)
-            {
-                direction.x += 1;
-            }
-        }
+        public void OnMoveLeft(InputAction.CallbackContext context) => _ = context.performed == true ? movementDirection[0] = true : movementDirection[0] = false;
 
         public void OnMoveJump(InputAction.CallbackContext context)
         {
             if (context.performed && grounded)
             {
                 grounded = false;
-                isJumping = true;
+                movementDirection[2] = true;
                 return;
             }
         }
