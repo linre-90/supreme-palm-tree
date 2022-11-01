@@ -5,6 +5,9 @@ namespace Footkin.Base
 {   
     public class Move : MonoBehaviour
     {
+        [SerializeField]
+        GameObject meshObject;
+
         public CharacterData characterData;
         Vector3 direction;
         CharacterController characterController;
@@ -54,10 +57,12 @@ namespace Footkin.Base
             if (movementDirection[0])
             {
                 direction.x = Mathf.Lerp(direction.x, -1f, characterData.Speed * Time.deltaTime);
+                meshObject.transform.eulerAngles = new Vector3(0f, 0f ,0f);
             }
             else if (movementDirection[1])
             {
                 direction.x = Mathf.Lerp(direction.x, 1f, characterData.Speed * Time.deltaTime);
+                meshObject.transform.eulerAngles = new Vector3(0f, -180f, 0f);
             }
             else
             {
