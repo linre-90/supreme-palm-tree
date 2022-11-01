@@ -8,4 +8,5 @@ using UnityEngine;
 public class SceneData : ScriptableObject
 {
     public string MainMenu = "MainMenu";
+    public string MainGame = "MainGame";
 }
