@@ -111,6 +111,7 @@ namespace Footkin.Controller
             List<GameObject> tempEnemies = new List<GameObject>(enemies);
             for (int i = 0; i < enemies.Count; i++)
             {
+                Debug.Log(tempEnemies[i].name);
                 if(tempEnemies[i] == null)
                 {
                     enemies.RemoveAt(i);
