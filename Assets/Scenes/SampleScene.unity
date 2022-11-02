@@ -900,6 +900,16 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7538516461673220191, guid: 9757f4dae824b204b85df6597b0e62d0,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 8.915068
+      objectReference: {fileID: 0}
+    - target: {fileID: 7538516461673220191, guid: 9757f4dae824b204b85df6597b0e62d0,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -4.457534
+      objectReference: {fileID: 0}
     - target: {fileID: 8869548244183313778, guid: 9757f4dae824b204b85df6597b0e62d0,
         type: 3}
       propertyPath: m_IsActive
@@ -910,6 +920,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8869548244406768309, guid: 9757f4dae824b204b85df6597b0e62d0,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1818868883100605536, guid: e3d2afc1689a67f46992565f5ac0535f,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 7244140452153020246, guid: 9757f4dae824b204b85df6597b0e62d0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 9757f4dae824b204b85df6597b0e62d0, type: 3}
