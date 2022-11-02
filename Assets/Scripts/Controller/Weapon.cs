@@ -113,6 +113,7 @@ namespace Footkin.Controller
                 Transform spawn = transform.GetChild(0).transform;
                 GameObject temp = Instantiate(projectile, spawn.position, Quaternion.identity, null);
                 ProjectileController x = temp.GetComponent<ProjectileController>();
+                temp.transform.rotation = transform.parent.rotation;
                 x.SetDamage(damageData.HitPoints);
                 x.SetDirection(-transform.parent.right);
             }

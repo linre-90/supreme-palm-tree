@@ -255,6 +255,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshObject: {fileID: 6323988189316483971}
   characterData: {fileID: 11400000, guid: a822ef5334188f342bb2216f98e5a6e1, type: 2}
+  animationController: {fileID: 0}
 --- !u!1001 &6323988189834931997
 PrefabInstance:
   m_ObjectHideFlags: 0

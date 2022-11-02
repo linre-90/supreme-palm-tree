@@ -111,6 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshObject: {fileID: 5633964089779367939}
   characterData: {fileID: 11400000, guid: a822ef5334188f342bb2216f98e5a6e1, type: 2}
+  animationController: {fileID: 0}
 --- !u!1 &5633964089768013042
 GameObject:
   m_ObjectHideFlags: 0
