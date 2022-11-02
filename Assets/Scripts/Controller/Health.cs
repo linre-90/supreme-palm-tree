@@ -9,7 +9,6 @@ namespace MyNamespace
     {
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log(other.gameObject.name);
             if (other.gameObject.CompareTag("Player"))
             {
                 bool collected = other.GetComponent<Character>().ReceiveHealth(35);

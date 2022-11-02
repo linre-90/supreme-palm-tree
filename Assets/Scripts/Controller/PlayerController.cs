@@ -46,7 +46,7 @@ namespace Footkin.Controller
 
         public override bool ReceiveHealth(int amount)
         {
-            if(this.health + amount < 100)
+            if(this.health + amount <= 100)
             {
                 this.health += amount;
                 return true;
