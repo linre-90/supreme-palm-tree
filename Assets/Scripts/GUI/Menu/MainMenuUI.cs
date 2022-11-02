@@ -13,11 +13,14 @@ namespace Footkin.GUI
             SceneManager.LoadScene(sceneData.MainGame);
         }
 
+        public void PlayMainMenu()
+        {
+            SceneManager.LoadScene(sceneData.MainMenu);
+        }
+
         public void QuitGame()
         {
             Application.Quit();
         }
-
     }
-
 }
