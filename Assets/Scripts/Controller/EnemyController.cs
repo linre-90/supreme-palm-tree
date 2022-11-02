@@ -23,6 +23,6 @@ namespace Footkin.Controller
             }
         }
 
-        public override void ReceiveHealth(int amount){}
+        public override bool ReceiveHealth(int amount){ return false; }
     } 
 }

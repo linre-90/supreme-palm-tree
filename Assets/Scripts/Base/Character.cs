@@ -18,7 +18,7 @@ namespace Footkin.Base
 
         abstract public void ReceiveDamage(int damage);
 
-        abstract public void ReceiveHealth(int amount);
+        abstract public bool ReceiveHealth(int amount);
 
     } 
 }
