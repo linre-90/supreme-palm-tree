@@ -51,6 +51,17 @@ namespace Footkin.Controller
             }
         }
 
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.CompareTag(damageData.targetTag))
+            {
+                if (!enemies.Contains(other.gameObject))
+                {
+                    enemies.Add(other.gameObject);
+                }
+            }
+        }
+
         private void OnTriggerExit(Collider other)
         {
 
@@ -80,43 +91,34 @@ namespace Footkin.Controller
 
         private void DoDamage()
         {
-            if(enemies.Count > 0)
-            {
-                if (damageData.type.Equals("MELEE"))
-                {
-                    animationController.SetBoolean(animationController.animationData.melee, true);
-                    foreach (GameObject enemy in enemies)
-                    {
-                        // Expert error handling for null reference....
-                        try
-                        {
-                            enemy.gameObject.GetComponent<Character>().ReceiveDamage(damageData.HitPoints);
-                        }
-                        catch (System.Exception) { }
-                    }
-                }
 
-                if (damageData.type.Equals("RANGED"))
-                {
-                    animationController.SetBoolean(animationController.animationData.ranged, true);
-                    Transform spawn = transform.GetChild(0).transform;
-                    GameObject temp =  Instantiate(projectile, spawn.position, Quaternion.identity, null);
-                    ProjectileController x = temp.GetComponent<ProjectileController>();
-                    x.SetDamage(damageData.HitPoints);
-                    x.SetDirection(-transform.parent.right);
-                }
-            }
-            Debug.Log(enemies.Count);
-            // Remove dead enemies
-            List<GameObject> tempEnemies = new List<GameObject>(enemies);
-            for (int i = 0; i < enemies.Count; i++)
+            if (damageData.type.Equals("MELEE"))
             {
-                Debug.Log(tempEnemies[i].name);
-                if(tempEnemies[i] == null)
+                animationController.SetBoolean(animationController.animationData.melee, true);
+                foreach (GameObject enemy in enemies)
                 {
-                    enemies.RemoveAt(i);
+                    // Expert error handling for null reference....
+                    try
+                    {
+                        enemy.gameObject.GetComponent<Character>().ReceiveDamage(damageData.HitPoints);
+                    }
+                    catch (System.Exception) { }
                 }
             }
+            
+
+            if (damageData.type.Equals("RANGED"))
+            {
+                animationController.SetBoolean(animationController.animationData.ranged, true);
+                Transform spawn = transform.GetChild(0).transform;
+                GameObject temp = Instantiate(projectile, spawn.position, Quaternion.identity, null);
+                ProjectileController x = temp.GetComponent<ProjectileController>();
+                x.SetDamage(damageData.HitPoints);
+                x.SetDirection(-transform.parent.right);
+            }
+
+            // Flush enemies list
+            enemies.Clear();
         }
 
         private void OnTimedEvent(object source, ElapsedEventArgs e)
