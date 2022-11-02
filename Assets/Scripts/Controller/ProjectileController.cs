@@ -5,11 +5,10 @@ namespace Footkin.Controller
 {
     public class ProjectileController : MonoBehaviour
     {
+        [SerializeField] float speed = 10f;
+        [SerializeField] GameObject deathVFX;
 
         CharacterController characterController;
-
-        [SerializeField]
-        float speed = 10f;
         float lifetime = 2f;
         int damage;
         Vector3 Direction;
@@ -41,11 +40,11 @@ namespace Footkin.Controller
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log(other.gameObject.tag);
             if(other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Enemy"))
             {
                 other.gameObject.GetComponent<Character>().ReceiveDamage(damage);
                 Destroy(this.gameObject);
+                Instantiate(deathVFX, transform.position, Quaternion.identity);
             }
         }
     }

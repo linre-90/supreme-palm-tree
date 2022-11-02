@@ -25,6 +25,8 @@ namespace Footkin.Controller
         [SerializeField]
         AnimationController animationController;
 
+        [SerializeField] GameObject punchVfx;
+
         private void Awake()
         {
             enemies = new List<GameObject>();
@@ -101,6 +103,8 @@ namespace Footkin.Controller
                     try
                     {
                         enemy.gameObject.GetComponent<Character>().ReceiveDamage(damageData.HitPoints);
+                        Instantiate(punchVfx, enemy.transform.position, Quaternion.identity);
+
                     }
                     catch (System.Exception) { }
                 }

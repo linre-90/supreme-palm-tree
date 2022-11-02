@@ -48,6 +48,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageData: {fileID: 0}
   projectile: {fileID: 0}
+  animationController: {fileID: 0}
+  punchVfx: {fileID: 8512933324521214452, guid: 9e6fcaee57c328748ab8ffeec4796755,
+    type: 3}
 --- !u!65 &871001894744082180
 BoxCollider:
   m_ObjectHideFlags: 0
