@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: enemyRanged
   m_EditorClassIdentifier: 
   HitPoints: 34
-  cooldown: 5000
+  cooldown: 3000
   targetTag: Player
   type: RANGED
