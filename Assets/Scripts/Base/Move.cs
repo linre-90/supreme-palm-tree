@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Footkin.Controller;
 
 namespace Footkin.Base
 {   
@@ -12,6 +13,10 @@ namespace Footkin.Base
         Vector3 direction;
         CharacterController characterController;
         bool grounded;
+
+        [SerializeField]
+        AnimationController animationController;
+        
 
         /// <summary>
         /// 0:Left, 1:right, 2:jump
@@ -45,7 +50,6 @@ namespace Footkin.Base
             // reached jump top height point
             if (movementDirection[2] && direction.y > .95f)
             {
-               
                 movementDirection[2] = false;
             }
             else if (movementDirection[2])
@@ -56,16 +60,19 @@ namespace Footkin.Base
             // Movement left right and reset
             if (movementDirection[0])
             {
+                animationController.SetBoolean(animationController.animationData.walk, true);
                 direction.x = Mathf.Lerp(direction.x, -1f, characterData.Speed * Time.deltaTime);
                 meshObject.transform.eulerAngles = new Vector3(0f, 0f ,0f);
             }
             else if (movementDirection[1])
             {
+                animationController.SetBoolean(animationController.animationData.walk, true);
                 direction.x = Mathf.Lerp(direction.x, 1f, characterData.Speed * Time.deltaTime);
                 meshObject.transform.eulerAngles = new Vector3(0f, -180f, 0f);
             }
             else
             {
+                animationController.SetBoolean(animationController.animationData.walk, false);
                 direction.x = Mathf.Lerp(direction.x, 0f, characterData.Speed * Time.deltaTime);
             }           
             
@@ -117,6 +124,7 @@ namespace Footkin.Base
         {
             if (context.performed && grounded)
             {
+                animationController.SetBoolean(animationController.animationData.jump, true);
                 grounded = false;
                 movementDirection[2] = true;
                 return;

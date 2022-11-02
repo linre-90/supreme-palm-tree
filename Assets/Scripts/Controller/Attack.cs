@@ -10,6 +10,8 @@ namespace Footkin.Controller
         public Weapon rangedWeapon;
         public Weapon meleeWeapon;
 
+
+
         public void OnRangedAttack(InputAction.CallbackContext context) => rangedWeapon.AttackEnemy();
         public void OnRangedAttack() => rangedWeapon.AttackEnemy();
 

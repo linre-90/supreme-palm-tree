@@ -6,6 +6,9 @@ using System.Timers;
 
 namespace Footkin.Controller
 {
+
+
+
     /// <summary>
     /// Weapon class
     /// </summary>
@@ -18,6 +21,9 @@ namespace Footkin.Controller
 
         [SerializeField]
         GameObject projectile;
+
+        [SerializeField]
+        AnimationController animationController;
 
         private void Awake()
         {
@@ -76,9 +82,9 @@ namespace Footkin.Controller
         {
             if(enemies.Count > 0)
             {
-                // TODO call attack animation
                 if (damageData.type.Equals("MELEE"))
                 {
+                    animationController.SetBoolean(animationController.animationData.melee, true);
                     foreach (GameObject enemy in enemies)
                     {
                         // Expert error handling for null reference....
@@ -92,11 +98,22 @@ namespace Footkin.Controller
 
                 if (damageData.type.Equals("RANGED"))
                 {
-                    Transform spawn = transform.GetChild(0).transform; /*GetComponentInChildren<Transform>()*/;
+                    animationController.SetBoolean(animationController.animationData.ranged, true);
+                    Transform spawn = transform.GetChild(0).transform;
                     GameObject temp =  Instantiate(projectile, spawn.position, Quaternion.identity, null);
                     ProjectileController x = temp.GetComponent<ProjectileController>();
                     x.SetDamage(damageData.HitPoints);
                     x.SetDirection(-transform.parent.right);
+                }
+            }
+            Debug.Log(enemies.Count);
+            // Remove dead enemies
+            List<GameObject> tempEnemies = new List<GameObject>(enemies);
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                if(tempEnemies[i] == null)
+                {
+                    enemies.RemoveAt(i);
                 }
             }
         }
