@@ -47,5 +47,10 @@ namespace Footkin.Controller
                 playerAttack.UnBindInput();
             }
         }
+
+        public override void ReceiveHealth(int amount)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

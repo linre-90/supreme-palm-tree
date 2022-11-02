@@ -22,5 +22,7 @@ namespace Footkin.Controller
                 Destroy(this.gameObject);
             }
         }
+
+        public override void ReceiveHealth(int amount){}
     } 
 }
