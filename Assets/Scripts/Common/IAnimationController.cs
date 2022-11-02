@@ -1,3 +1,4 @@
+
 namespace Footkin.Common
 {
     /// <summary>
@@ -6,9 +7,9 @@ namespace Footkin.Common
     /// </summary>
     public interface IAnimationController
     {
-        public void SetMoveAnimation(bool state);
-        public void SetRangedAnimation(bool state);
-        public void SetMeleeAnimation(bool state);
-        public void SetCollectAnimation(bool state);
+        public void SetBoolean(string name, bool value);
+
+        public void ResetBooleanToFalse(string name);
+
     } 
 }

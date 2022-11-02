@@ -10,20 +10,13 @@ namespace Footkin.Controller
         public Weapon rangedWeapon;
         public Weapon meleeWeapon;
 
-        public void OnRangedAttack(InputAction.CallbackContext context)
-        {
-            if (context.performed)
-            {
-                rangedWeapon.AttackEnemy();
-            }
-        }
 
-        public void OnMeleeAttack(InputAction.CallbackContext context)
-        {
-            if (context.performed)
-            {
-                rangedWeapon.AttackEnemy();
-            }
-        }
+
+        public void OnRangedAttack(InputAction.CallbackContext context) => rangedWeapon.AttackEnemy();
+        public void OnRangedAttack() => rangedWeapon.AttackEnemy();
+
+        public void OnMeleeAttack(InputAction.CallbackContext context) => meleeWeapon.AttackEnemy();
+        public void OnMeleeAttack() => meleeWeapon.AttackEnemy();
+        
     } 
 }

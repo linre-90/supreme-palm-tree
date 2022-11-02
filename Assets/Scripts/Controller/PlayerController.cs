@@ -16,6 +16,7 @@ namespace Footkin.Controller
 
         public override void ReceiveDamage(int damage)
         {
+            Debug.Log("asdasdasd");
             health -= damage;
             if(health <= 0)
             {
@@ -33,6 +34,10 @@ namespace Footkin.Controller
             playerAttack.BindInput();
             health = characterData.Health;
         }
+        private void Update()
+        {
+            //Debug.Log(health);
+        }
 
         private void OnDestroy()
         {
@@ -41,6 +46,11 @@ namespace Footkin.Controller
                 playerMove.UnBindInput();
                 playerAttack.UnBindInput();
             }
+        }
+
+        public override void ReceiveHealth(int amount)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

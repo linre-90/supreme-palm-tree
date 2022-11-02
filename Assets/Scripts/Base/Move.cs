@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Footkin.Controller;
 
 namespace Footkin.Base
 {   
@@ -12,6 +13,10 @@ namespace Footkin.Base
         Vector3 direction;
         CharacterController characterController;
         bool grounded;
+
+        [SerializeField]
+        AnimationController animationController;
+        
 
         /// <summary>
         /// 0:Left, 1:right, 2:jump
@@ -27,7 +32,7 @@ namespace Footkin.Base
         private void Update()
         {
             // Gravity + ground ray
-            if (Physics.Raycast(this.transform.position, Vector3.down, out RaycastHit hit, 1.1f, ~6))
+            if (Physics.Raycast(this.transform.position, Vector3.down, out RaycastHit hit, 1.1f, 1 << 7))
             {
                 if (!movementDirection[2])
                 {
@@ -45,7 +50,6 @@ namespace Footkin.Base
             // reached jump top height point
             if (movementDirection[2] && direction.y > .95f)
             {
-               
                 movementDirection[2] = false;
             }
             else if (movementDirection[2])
@@ -56,31 +60,71 @@ namespace Footkin.Base
             // Movement left right and reset
             if (movementDirection[0])
             {
+                animationController.SetBoolean(animationController.animationData.walk, true);
                 direction.x = Mathf.Lerp(direction.x, -1f, characterData.Speed * Time.deltaTime);
                 meshObject.transform.eulerAngles = new Vector3(0f, 0f ,0f);
             }
             else if (movementDirection[1])
             {
+                animationController.SetBoolean(animationController.animationData.walk, true);
                 direction.x = Mathf.Lerp(direction.x, 1f, characterData.Speed * Time.deltaTime);
                 meshObject.transform.eulerAngles = new Vector3(0f, -180f, 0f);
             }
             else
             {
+                animationController.SetBoolean(animationController.animationData.walk, false);
                 direction.x = Mathf.Lerp(direction.x, 0f, characterData.Speed * Time.deltaTime);
             }           
-
+            
             // Perform movement to direction
             characterController.Move(direction * Time.deltaTime * characterData.Speed);
         }
 
-        public void OnMoveRight(InputAction.CallbackContext context) => _ = context.performed == true ? movementDirection[1] = true : movementDirection[1] = false;
+        public void OnMoveRight(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+            {
+                movementDirection[1] = true;
+                return;
+            }
+            movementDirection[1] = false;
+        }
 
-        public void OnMoveLeft(InputAction.CallbackContext context) => _ = context.performed == true ? movementDirection[0] = true : movementDirection[0] = false;
+        public void OnMoveRight(bool performed)
+        {
+            if (performed)
+            {
+                movementDirection[1] = true;
+                return;
+            }
+            movementDirection[1] = false;
+        }
+
+        public void OnMoveLeft(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+            {
+                movementDirection[0] = true;
+                return;
+            }
+            movementDirection[0] = false;
+        }
+
+        public void OnMoveLeft(bool performed)
+        {
+            if (performed)
+            {
+                movementDirection[0] = true;
+                return;
+            }
+            movementDirection[0] = false;
+        }
 
         public void OnMoveJump(InputAction.CallbackContext context)
         {
             if (context.performed && grounded)
             {
+                animationController.SetBoolean(animationController.animationData.jump, true);
                 grounded = false;
                 movementDirection[2] = true;
                 return;

@@ -1,9 +1,14 @@
+using Footkin.Base;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Timers;
 
 namespace Footkin.Controller
 {
+
+
+
     /// <summary>
     /// Weapon class
     /// </summary>
@@ -11,43 +16,120 @@ namespace Footkin.Controller
     {
         public DamageData damageData;
         private List<GameObject> enemies;
+        private Timer cooldownTimer;
+        private bool usable = false;
+
+        [SerializeField]
+        GameObject projectile;
+
+        [SerializeField]
+        AnimationController animationController;
+
+        [SerializeField] GameObject punchVfx;
 
         private void Awake()
         {
             enemies = new List<GameObject>();
+            cooldownTimer = new Timer(damageData.cooldown);
+            cooldownTimer.Elapsed += OnTimedEvent;
+        }
+
+        private void Start()
+        {
+            cooldownTimer.Enabled = true;
+            cooldownTimer.Start();
+        }
+
+        private void OnDestroy()
+        {
+            cooldownTimer.Elapsed -= OnTimedEvent;
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            enemies.Add(other.gameObject);
+            if (other.CompareTag(damageData.targetTag))
+            {
+                enemies.Add(other.gameObject);
+            }
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (other.CompareTag(damageData.targetTag))
+            {
+                if (!enemies.Contains(other.gameObject))
+                {
+                    enemies.Add(other.gameObject);
+                }
+            }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            try
+
+            if (other.CompareTag(damageData.targetTag))
             {
-                enemies.Remove(other.gameObject);
+                try
+                {
+                    enemies.Remove(other.gameObject);
+                }
+                catch (System.Exception) { }
             }
-            catch (System.Exception){}
-            
         }
 
-        public void AttackEnemy()
+        /// <summary>
+        /// Overloaded method in ranged weapon.
+        /// </summary>
+        virtual public void AttackEnemy()
         {
-            DoDamage();
+            if (usable)
+            {
+                usable = false;
+                cooldownTimer.Interval = damageData.cooldown;
+                cooldownTimer.Start();
+                DoDamage();
+            }
         }
 
         private void DoDamage()
         {
-            foreach (GameObject enemy in enemies)
+
+            if (damageData.type.Equals("MELEE"))
             {
-                // Expert error handling for null reference....
-                try
+                animationController.SetBoolean(animationController.animationData.melee, true);
+                foreach (GameObject enemy in enemies)
                 {
-                    enemy.GetComponent<EnemyController>().ReceiveDamage(damageData.HitPoints);
+                    // Expert error handling for null reference....
+                    try
+                    {
+                        enemy.gameObject.GetComponent<Character>().ReceiveDamage(damageData.HitPoints);
+                        Instantiate(punchVfx, enemy.transform.position, Quaternion.identity);
+
+                    }
+                    catch (System.Exception) { }
                 }
-                catch (System.Exception){}
             }
+            
+
+            if (damageData.type.Equals("RANGED"))
+            {
+                animationController.SetBoolean(animationController.animationData.ranged, true);
+                Transform spawn = transform.GetChild(0).transform;
+                GameObject temp = Instantiate(projectile, spawn.position, Quaternion.identity, null);
+                ProjectileController x = temp.GetComponent<ProjectileController>();
+                temp.transform.rotation = transform.parent.rotation;
+                x.SetDamage(damageData.HitPoints);
+                x.SetDirection(-transform.parent.right);
+            }
+
+            // Flush enemies list
+            enemies.Clear();
+        }
+
+        private void OnTimedEvent(object source, ElapsedEventArgs e)
+        {
+            cooldownTimer.Stop();
+            usable = true;
         }
     } 
 }
