@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 307715518974404799}
   - component: {fileID: 307715518974404797}
   m_Layer: 0
-  m_Name: PlaySinglePumpkin
+  m_Name: PlaySingleCollect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,9 +42,9 @@ AudioSource:
   m_GameObject: {fileID: 307715518974404798}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -7507775144397788768, guid: aa95c10213bfa61429377cb74ddf58fc,
+  OutputAudioMixerGroup: {fileID: 7136567966487837730, guid: aa95c10213bfa61429377cb74ddf58fc,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: a98fc0ed6c6b59e43a1416bcb1122c79, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 921477b61a62b1240b3cd3a86885a77d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
