@@ -15968,7 +15968,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.58
+  - time: 0.48
     functionName: OnBoolReset
     data: jump
     objectReferenceParameter: {fileID: 0}

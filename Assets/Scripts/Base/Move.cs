@@ -41,6 +41,7 @@ namespace Footkin.Base
                 {
                     direction.y = 0f;
                     grounded = true;
+                    animationController.SetBoolean(animationController.animationData.jump, false);
                 }
             }
             else
@@ -90,6 +91,7 @@ namespace Footkin.Base
 
             if (!grounded)
             {
+                
                 characterAudio.ModifySound(CharacterAudio.Sounds.walk, CharacterAudio.SoundModifier.stop, false);
             }
             
