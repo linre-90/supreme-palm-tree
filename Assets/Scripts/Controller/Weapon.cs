@@ -16,8 +16,6 @@ namespace Footkin.Controller
         private Timer cooldownTimer;
         private bool usable = false;
 
-
-
         [SerializeField]
         GameObject projectile;
 
@@ -28,18 +26,31 @@ namespace Footkin.Controller
 
         [SerializeField] CharacterAudio characterAudio;
 
+        [SerializeField] GameObject rangedIndicator;
+
+
+        bool indicatorOnState = false;
 
         private void Awake()
         {
             enemies = new List<GameObject>();
             cooldownTimer = new Timer(damageData.cooldown);
             cooldownTimer.Elapsed += OnTimedEvent;
+            indicatorOnState = false;
         }
 
         private void Start()
         {
             cooldownTimer.Enabled = true;
             cooldownTimer.Start();
+        }
+
+        private void Update()
+        {
+            if(rangedIndicator)
+            {
+                rangedIndicator.SetActive(indicatorOnState);
+            }
         }
 
         private void OnDestroy()
@@ -86,6 +97,7 @@ namespace Footkin.Controller
         {
             if (usable)
             {
+                indicatorOnState = false;
                 usable = false;
                 cooldownTimer.Interval = damageData.cooldown;
                 cooldownTimer.Start();
@@ -113,7 +125,7 @@ namespace Footkin.Controller
                     catch (System.Exception) { }
                 }
             }
-            
+
 
             if (damageData.type.Equals("RANGED"))
             {
@@ -135,6 +147,7 @@ namespace Footkin.Controller
         {
             cooldownTimer.Stop();
             usable = true;
+            indicatorOnState = true;
         }
-    } 
+    }
 }
