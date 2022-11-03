@@ -9,7 +9,7 @@ public class FadingScript : MonoBehaviour
     public bool fadeInReady = false;
     public bool fadeOutReady = false;
 
-
+    public CharacterData characterData;
 
     /*
      *   fadeOutReady = Scenen vaihto, pelin alku jne. (Alpha 1 -> 0)           |||  Call: FadingScript.fadeOutReady = true; (False after done)
@@ -46,6 +46,11 @@ public class FadingScript : MonoBehaviour
           {
             fadeOutReady = false;
           }
+        }
+
+        if(characterData.Health <= 0)
+        {
+            DeathFade();
         }
     }
 
