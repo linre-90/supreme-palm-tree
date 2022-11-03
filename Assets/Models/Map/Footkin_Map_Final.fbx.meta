@@ -15,7 +15,82 @@ ModelImporter:
   - first:
       74: -9129208065016766146
     second: WindFan1|CameraAction
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CornLayer
+    second: {fileID: 2100000, guid: 5af3262882570c5488ffe4f3e54021c3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DetailFix_Material
+    second: {fileID: 2100000, guid: 7c1b1f5d85afb9948a4b478d287febc9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EndField
+    second: {fileID: 2100000, guid: c25370d1dc52b4e418cdbdd0b7c20342, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FlowerLayer
+    second: {fileID: 2100000, guid: d57bd58e8ea36454d8f0bda5a127d4ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GrassLayer
+    second: {fileID: 2100000, guid: 07caab774f1a9074abbde55b66a0391f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House_Emission
+    second: {fileID: 2100000, guid: f8ac93f8c857b45498579911c119a364, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: House_Material
+    second: {fileID: 2100000, guid: c87aafc3e9a7e4043a9d847ff559c70a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MainRoad_Material
+    second: {fileID: 2100000, guid: d64b02a88293a1b45833644a2c2da305, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rocks_Material
+    second: {fileID: 2100000, guid: d64b02a88293a1b45833644a2c2da305, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Scaffold
+    second: {fileID: 2100000, guid: 0513735a5a0473a4ab9288f3f53a97f7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TreeLayer
+    second: {fileID: 2100000, guid: 0afbe37386f2b214685142e5e9bdb935, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Trees_Material
+    second: {fileID: 2100000, guid: 2a4201edbf291b247ab209fcecbfeec5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WellRope_Mateial
+    second: {fileID: 2100000, guid: 8bd17d735f2bd3a4cac2cb6098ea53a8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WindMill_Blade
+    second: {fileID: 2100000, guid: 860554fbd2a0ac14687f3b8a336e9e50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: WindMill_Material
+    second: {fileID: 2100000, guid: ca3e2b403db603843acd072c8e08e981, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
