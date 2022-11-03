@@ -1,96 +1,47 @@
 fileFormatVersion: 2
-guid: 3b1f4ff6b89b5a141b0853df42ed079f
+guid: e064e78d5288c6f469a8673b9c4b3b1e
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
-      74: -7286098304862594544
-    second: Map_Perspective_Camera|CameraAction
+      74: -7613917237592043415
+    second: Armature|Collect
   - first:
-      74: -3035924249814074674
-    second: WindFan2|CameraAction
+      74: -8945691123924629249
+    second: Armature|Idle
   - first:
-      74: -2469982652204633911
-    second: WindFan3|CameraAction
+      74: 3520749527373145362
+    second: Armature|Melee
   - first:
-      74: -9129208065016766146
-    second: WindFan1|CameraAction
+      74: 4864167173593899979
+    second: Armature|Ranged
+  - first:
+      74: 4648985917264196926
+    second: Armature|Reset
+  - first:
+      74: 8349542763059015795
+    second: Armature|Walk
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: CornLayer
-    second: {fileID: 2100000, guid: 5af3262882570c5488ffe4f3e54021c3, type: 2}
+      name: Body
+    second: {fileID: 2100000, guid: d65f20d719322e84488c94988ca1cac9, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: DetailFix_Material
-    second: {fileID: 2100000, guid: 7c1b1f5d85afb9948a4b478d287febc9, type: 2}
+      name: EnemyPumpkinBoss
+    second: {fileID: 2100000, guid: 60ed4a3d71fe4f4428cb9a887b988dcb, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: EndField
-    second: {fileID: 2100000, guid: c25370d1dc52b4e418cdbdd0b7c20342, type: 2}
+      name: EnemyPumpkinEmission
+    second: {fileID: 2100000, guid: e3d415e68ac4f2b40a65573e96a7a344, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: FlowerLayer
-    second: {fileID: 2100000, guid: d57bd58e8ea36454d8f0bda5a127d4ba, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: GrassLayer
-    second: {fileID: 2100000, guid: 07caab774f1a9074abbde55b66a0391f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: House_Emission
-    second: {fileID: 2100000, guid: f8ac93f8c857b45498579911c119a364, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: House_Material
-    second: {fileID: 2100000, guid: c87aafc3e9a7e4043a9d847ff559c70a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: MainRoad_Material
-    second: {fileID: 2100000, guid: d64b02a88293a1b45833644a2c2da305, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Rocks_Material
-    second: {fileID: 2100000, guid: d64b02a88293a1b45833644a2c2da305, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Scaffold
-    second: {fileID: 2100000, guid: 0513735a5a0473a4ab9288f3f53a97f7, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: TreeLayer
-    second: {fileID: 2100000, guid: 0afbe37386f2b214685142e5e9bdb935, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Trees_Material
-    second: {fileID: 2100000, guid: 2a4201edbf291b247ab209fcecbfeec5, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: WellRope_Mateial
-    second: {fileID: 2100000, guid: 8bd17d735f2bd3a4cac2cb6098ea53a8, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: WindMill_Blade
-    second: {fileID: 2100000, guid: 860554fbd2a0ac14687f3b8a336e9e50, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: WindMill_Material
-    second: {fileID: 2100000, guid: ca3e2b403db603843acd072c8e08e981, type: 2}
+      name: Tux
+    second: {fileID: 2100000, guid: be599273389febe40acab584aa5dbef6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
