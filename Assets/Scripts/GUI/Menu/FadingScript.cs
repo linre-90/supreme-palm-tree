@@ -56,7 +56,7 @@ public class FadingScript : MonoBehaviour
             DeathFade();
         }
 
-        if (bossNPC != null && bossNPC.GetComponent<EnemyController>().GetHealth() <= 0)
+        if (bossNPC == null)
         {
             WinFade();
         }

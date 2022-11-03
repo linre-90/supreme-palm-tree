@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Footkin.Base;
-using System;
 
 namespace Footkin.Controller
 {
@@ -28,9 +27,5 @@ namespace Footkin.Controller
 
         public override bool ReceiveHealth(int amount){ return false; }
 
-        public int GetHealth()
-        {
-            return health;
-        }
     } 
 }
