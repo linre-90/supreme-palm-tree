@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: enemyMelee
   m_EditorClassIdentifier: 
   HitPoints: 34
-  cooldown: 1000
+  cooldown: 600
   targetTag: Player
   type: MELEE

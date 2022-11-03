@@ -33,8 +33,9 @@ namespace Footkin.Base
 
         private void Update()
         {
+            //Debug.DrawRay(this.transform.position, Vector3.down * 1.15f, Color.red, 2f);
             // Gravity + ground ray
-            if (Physics.Raycast(this.transform.position, Vector3.down, out RaycastHit hit, 1.1f, 1 << 7))
+            if (Physics.Raycast(this.transform.position, Vector3.down, out RaycastHit hit, 1.15f, 1 << 7))
             {
                 if (!movementDirection[2])
                 {

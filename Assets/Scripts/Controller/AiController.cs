@@ -27,11 +27,13 @@ namespace Footkin.Controller
                 // Follow to right
                 if(detectionPosition.x >= transform.position.x)
                 {
+                    enemyMove.OnAttackPressed(new InputAction.CallbackContext());
                     enemyMove.OnMoveRight(true);
                 }
 
-                if (detectionPosition.x < transform.position.x)
+                if (detectionPosition.x <= transform.position.x)
                 {
+                    enemyMove.OnAttackPressed(new InputAction.CallbackContext());
                     enemyMove.OnMoveLeft(true);
                 }
                 followPlayer = false;
@@ -45,6 +47,7 @@ namespace Footkin.Controller
                 {
                     if (attack.meleeWeapon)
                     {
+                        enemyMove.OnAttackPressed(new InputAction.CallbackContext());
                         attack.OnMeleeAttack();
                     }
                 }
@@ -58,6 +61,7 @@ namespace Footkin.Controller
                 {
                     if (attack.rangedWeapon)
                     {
+                        enemyMove.OnAttackPressed(new InputAction.CallbackContext());
                         attack.OnRangedAttack();
                     }
                 }

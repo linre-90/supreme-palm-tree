@@ -13,15 +13,23 @@ namespace Footkin.Controller
         Vector3 detectedPosition;
         [SerializeField]
         AiController aiController;
-
+        
+        /*
         private void OnTriggerEnter(Collider other)
         {
             detectedPosition = other.gameObject.transform.position;
             Follow();
-        }
+        }*/
+
         private void OnTriggerExit(Collider other)
         {
             aiController.LostPlayer();
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            detectedPosition = other.gameObject.transform.position;
+            Follow();
         }
 
         private void Follow()
