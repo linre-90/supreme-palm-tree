@@ -36,8 +36,10 @@ public class CharacterAudio : MonoBehaviour
             case SoundModifier.play:
                 if(!oneShot)
                 {
-                    x.Stop();
-                    x.Play();
+                    if (!x.isPlaying)
+                    {
+                        x.Play();
+                    }
                 }
                 else
                 {

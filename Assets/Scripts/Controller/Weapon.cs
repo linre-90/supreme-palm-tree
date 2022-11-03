@@ -27,6 +27,9 @@ namespace Footkin.Controller
 
         [SerializeField] GameObject punchVfx;
 
+        [SerializeField] CharacterAudio characterAudio;
+
+
         private void Awake()
         {
             enemies = new List<GameObject>();
@@ -96,6 +99,8 @@ namespace Footkin.Controller
 
             if (damageData.type.Equals("MELEE"))
             {
+                characterAudio.ModifySound(CharacterAudio.Sounds.melee, CharacterAudio.SoundModifier.play);
+                characterAudio.ModifySound(CharacterAudio.Sounds.walk, CharacterAudio.SoundModifier.stop);
                 animationController.SetBoolean(animationController.animationData.melee, true);
                 foreach (GameObject enemy in enemies)
                 {
@@ -113,6 +118,7 @@ namespace Footkin.Controller
 
             if (damageData.type.Equals("RANGED"))
             {
+                characterAudio.ModifySound(CharacterAudio.Sounds.range, CharacterAudio.SoundModifier.play);
                 animationController.SetBoolean(animationController.animationData.ranged, true);
                 Transform spawn = transform.GetChild(0).transform;
                 GameObject temp = Instantiate(projectile, spawn.position, Quaternion.identity, null);

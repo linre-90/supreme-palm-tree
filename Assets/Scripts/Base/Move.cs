@@ -16,6 +16,8 @@ namespace Footkin.Base
 
         [SerializeField]
         AnimationController animationController;
+
+        [SerializeField] CharacterAudio characterAudio;
         
 
         /// <summary>
@@ -60,21 +62,35 @@ namespace Footkin.Base
             // Movement left right and reset
             if (movementDirection[0])
             {
-                animationController.SetBoolean(animationController.animationData.walk, true);
+                if (grounded)
+                {
+                    animationController.SetBoolean(animationController.animationData.walk, true);
+                    characterAudio.ModifySound(CharacterAudio.Sounds.walk, CharacterAudio.SoundModifier.play, false);
+                }
                 direction.x = Mathf.Lerp(direction.x, -1f, characterData.Speed * Time.deltaTime);
                 meshObject.transform.eulerAngles = new Vector3(0f, 0f ,0f);
             }
             else if (movementDirection[1])
             {
-                animationController.SetBoolean(animationController.animationData.walk, true);
+                if (grounded)
+                {
+                    animationController.SetBoolean(animationController.animationData.walk, true);
+                    characterAudio.ModifySound(CharacterAudio.Sounds.walk, CharacterAudio.SoundModifier.play, false);
+                }
                 direction.x = Mathf.Lerp(direction.x, 1f, characterData.Speed * Time.deltaTime);
                 meshObject.transform.eulerAngles = new Vector3(0f, -180f, 0f);
             }
             else
             {
+                characterAudio.ModifySound(CharacterAudio.Sounds.walk, CharacterAudio.SoundModifier.stop, false);
                 animationController.SetBoolean(animationController.animationData.walk, false);
                 direction.x = Mathf.Lerp(direction.x, 0f, characterData.Speed * Time.deltaTime);
-            }           
+            }
+
+            if (!grounded)
+            {
+                characterAudio.ModifySound(CharacterAudio.Sounds.walk, CharacterAudio.SoundModifier.stop, false);
+            }
             
             // Perform movement to direction
             characterController.Move(direction * Time.deltaTime * characterData.Speed);

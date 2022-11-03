@@ -13,6 +13,8 @@ namespace Footkin.Controller
         int damage;
         Vector3 Direction;
 
+        [SerializeField] AudioClip destroyClip;
+
         private void Awake()
         {
             characterController = GetComponent<CharacterController>();
@@ -42,6 +44,7 @@ namespace Footkin.Controller
         {
             if(other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Enemy"))
             {
+                AudioSource.PlayClipAtPoint(destroyClip, transform.position);
                 other.gameObject.GetComponent<Character>().ReceiveDamage(damage);
                 Destroy(this.gameObject);
                 Instantiate(deathVFX, transform.position, Quaternion.identity);
