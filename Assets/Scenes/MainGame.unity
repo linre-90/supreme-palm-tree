@@ -2974,7 +2974,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Koetappa uuvvestaa
+  m_text: Git Gud. Scrub!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a9aebf5f4e1ad7e429e9b3d6f6576823, type: 2}
   m_sharedMaterial: {fileID: -7678038101525140627, guid: a9aebf5f4e1ad7e429e9b3d6f6576823,
@@ -3002,7 +3002,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 49.7
+  m_fontSize: 52.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5995,7 +5995,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Kuolit!
+  m_text: You died!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a9aebf5f4e1ad7e429e9b3d6f6576823, type: 2}
   m_sharedMaterial: {fileID: -7678038101525140627, guid: a9aebf5f4e1ad7e429e9b3d6f6576823,
