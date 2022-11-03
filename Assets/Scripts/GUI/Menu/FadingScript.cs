@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Footkin.Controller;
 
 public class FadingScript : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class FadingScript : MonoBehaviour
     public bool fadeOutReady = false;
 
     public CharacterData characterData;
+    public GameObject bossNPC;
 
     /*
      *   fadeOutReady = Scenen vaihto, pelin alku jne. (Alpha 1 -> 0)           |||  Call: FadingScript.fadeOutReady = true; (False after done)
@@ -52,6 +54,11 @@ public class FadingScript : MonoBehaviour
         if(characterData.Health <= 0)
         {
             DeathFade();
+        }
+
+        if (bossNPC != null && bossNPC.GetComponent<EnemyController>().GetHealth() <= 0)
+        {
+            WinFade();
         }
     }
 
