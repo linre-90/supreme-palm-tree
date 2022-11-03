@@ -13,7 +13,7 @@ namespace MyNamespace
         {
             if (other.gameObject.CompareTag("Player"))
             {
-                bool collected = other.GetComponent<Character>().ReceiveHealth(35);
+                bool collected = other.GetComponent<Character>().ReceiveHealth(25);
                 if (collected)
                 {
                     Instantiate(PickupAudioPlayer, transform.position, Quaternion.identity);
