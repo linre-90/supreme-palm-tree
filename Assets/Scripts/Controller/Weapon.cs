@@ -28,12 +28,21 @@ namespace Footkin.Controller
 
         [SerializeField] CharacterAudio characterAudio;
 
+        [SerializeField] GameObject indicator;
+
+        private Color orgColor;
 
         private void Awake()
         {
             enemies = new List<GameObject>();
             cooldownTimer = new Timer(damageData.cooldown);
             cooldownTimer.Elapsed += OnTimedEvent;
+            if (indicator)
+            {
+                orgColor = indicator.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor");
+                indicator.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", Color.black);
+            }
+            
         }
 
         private void Start()
@@ -86,6 +95,11 @@ namespace Footkin.Controller
         {
             if (usable)
             {
+                if (indicator)
+                {
+                    indicator.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", Color.black);
+                }
+                
                 usable = false;
                 cooldownTimer.Interval = damageData.cooldown;
                 cooldownTimer.Start();
@@ -135,6 +149,11 @@ namespace Footkin.Controller
         {
             cooldownTimer.Stop();
             usable = true;
+            if (indicator)
+            {
+                indicator.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", orgColor);
+            }
+            
         }
     } 
 }
