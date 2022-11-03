@@ -50,7 +50,7 @@ namespace Footkin.Controller
                 }
             }
 
-            Debug.DrawRay(this.transform.position, -transform.GetChild(0).transform.right * 8f, Color.red, 1f);
+            //Debug.DrawRay(this.transform.position, -transform.GetChild(0).transform.right * 8f, Color.red, 1f);
             // hit detection for ranged attack key press
             if (Physics.Raycast(this.transform.position, -transform.GetChild(0).transform.right, out RaycastHit rangedhit, 8f, 1 << 6))
             {
