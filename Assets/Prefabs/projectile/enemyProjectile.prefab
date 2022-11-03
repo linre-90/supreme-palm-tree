@@ -120,7 +120,8 @@ MonoBehaviour:
   speed: 10
   deathVFX: {fileID: 2257422636351446315, guid: f4c68ce5315246747aa5dbc251df4197,
     type: 3}
-  destroyClip: {fileID: 8300000, guid: a98fc0ed6c6b59e43a1416bcb1122c79, type: 3}
+  destroyClipAudioPlayer: {fileID: 307715518974404798, guid: 74826937ba134e2428694f66781a25f4,
+    type: 3}
 --- !u!135 &-953196971643365879
 SphereCollider:
   m_ObjectHideFlags: 0

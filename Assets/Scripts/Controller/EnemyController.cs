@@ -8,6 +8,7 @@ namespace Footkin.Controller
     public class EnemyController : Character
     {
         int health;
+        [SerializeField] GameObject deathClipAudioPLayer;
 
         private void Awake()
         {
@@ -19,6 +20,7 @@ namespace Footkin.Controller
             health -= damage;
             if (health <= 0)
             {
+                Instantiate(deathClipAudioPLayer, transform.position, Quaternion.identity);
                 Destroy(this.gameObject);
             }
         }
