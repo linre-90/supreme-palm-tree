@@ -6,6 +6,7 @@ public class FadingScript : MonoBehaviour
 {
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private GameObject deathImage;
+    [SerializeField] private GameObject winImage;
     public bool fadeInReady = false;
     public bool fadeOutReady = false;
 
@@ -65,5 +66,12 @@ public class FadingScript : MonoBehaviour
         fadeOutReady = false;
         fadeInReady = true;
         deathImage.SetActive(true);
+    }
+
+    public void WinFade()
+    {
+        fadeOutReady = false;
+        fadeInReady = true;
+        winImage.SetActive(true);
     }
 }
