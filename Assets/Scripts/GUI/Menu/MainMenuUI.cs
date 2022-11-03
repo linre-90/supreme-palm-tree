@@ -10,6 +10,7 @@ namespace Footkin.GUI
         public SceneData sceneData;
         public void PlayGame()
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene(sceneData.MainGame);
         }
 
