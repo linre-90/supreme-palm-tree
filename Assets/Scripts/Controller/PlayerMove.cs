@@ -14,6 +14,9 @@ namespace Footkin.Controller
         InputAction moveRight;
         InputAction jump;
 
+        InputAction melee;
+        InputAction range;
+
 
 
         public void BindInput()
@@ -30,6 +33,12 @@ namespace Footkin.Controller
             moveLeft.canceled += OnMoveLeft;
             moveRight.canceled += OnMoveRight;
             jump.canceled += OnMoveJump;
+
+            // Bind input to release movement
+            melee = playerInput.actions.FindAction("MeleeAttack");
+            range = playerInput.actions.FindAction("RangedAttack");
+            melee.performed += OnAttackPressed;
+            range.performed += OnAttackPressed;
         }
 
         public void UnBindInput()
@@ -41,6 +50,9 @@ namespace Footkin.Controller
             moveLeft.canceled -= OnMoveLeft;
             moveRight.canceled -= OnMoveRight;
             jump.canceled -= OnMoveJump;
+
+            melee.performed -= OnAttackPressed;
+            range.performed -= OnAttackPressed;
         }
     } 
 }

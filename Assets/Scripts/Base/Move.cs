@@ -146,5 +146,11 @@ namespace Footkin.Base
                 return;
             }
         }
+
+        public void OnAttackPressed(InputAction.CallbackContext context)
+        {
+            movementDirection[0] = false;
+            movementDirection[1] = false;
+        }
     } 
 }

@@ -18,7 +18,6 @@ namespace Footkin.Controller
             {
                 playerAttack.UnBindInput();
                 playerMove.UnBindInput();
-                Debug.Log("TODO: Show again quit button");
             }
         }
 
