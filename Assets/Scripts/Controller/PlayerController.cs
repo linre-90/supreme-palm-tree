@@ -37,6 +37,8 @@ namespace Footkin.Controller
                 playerMove.UnBindInput();
                 playerAttack.UnBindInput();
             }
+
+            characterData.Health = 100;
         }
 
         public override bool ReceiveHealth(int amount)

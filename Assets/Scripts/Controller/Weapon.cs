@@ -16,8 +16,6 @@ namespace Footkin.Controller
         private Timer cooldownTimer;
         private bool usable = false;
 
-
-
         [SerializeField]
         GameObject projectile;
 
@@ -28,27 +26,31 @@ namespace Footkin.Controller
 
         [SerializeField] CharacterAudio characterAudio;
 
-        [SerializeField] GameObject indicator;
+        [SerializeField] GameObject rangedIndicator;
 
-        private Color orgColor;
+
+        bool indicatorOnState = false;
 
         private void Awake()
         {
             enemies = new List<GameObject>();
             cooldownTimer = new Timer(damageData.cooldown);
             cooldownTimer.Elapsed += OnTimedEvent;
-            if (indicator)
-            {
-                orgColor = indicator.GetComponent<MeshRenderer>().material.GetColor("_EmissionColor");
-                indicator.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", Color.black);
-            }
-            
+            indicatorOnState = false;
         }
 
         private void Start()
         {
             cooldownTimer.Enabled = true;
             cooldownTimer.Start();
+        }
+
+        private void Update()
+        {
+            if(rangedIndicator)
+            {
+                rangedIndicator.SetActive(indicatorOnState);
+            }
         }
 
         private void OnDestroy()
@@ -95,11 +97,7 @@ namespace Footkin.Controller
         {
             if (usable)
             {
-                if (indicator)
-                {
-                    indicator.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", Color.black);
-                }
-                
+                indicatorOnState = false;
                 usable = false;
                 cooldownTimer.Interval = damageData.cooldown;
                 cooldownTimer.Start();
@@ -127,7 +125,7 @@ namespace Footkin.Controller
                     catch (System.Exception) { }
                 }
             }
-            
+
 
             if (damageData.type.Equals("RANGED"))
             {
@@ -149,11 +147,7 @@ namespace Footkin.Controller
         {
             cooldownTimer.Stop();
             usable = true;
-            if (indicator)
-            {
-                indicator.GetComponent<MeshRenderer>().material.SetColor("_EmissionColor", orgColor);
-            }
-            
+            indicatorOnState = true;
         }
-    } 
+    }
 }
