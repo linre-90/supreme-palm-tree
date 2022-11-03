@@ -6,9 +6,6 @@ using System.Timers;
 
 namespace Footkin.Controller
 {
-
-
-
     /// <summary>
     /// Weapon class
     /// </summary>
@@ -18,6 +15,8 @@ namespace Footkin.Controller
         private List<GameObject> enemies;
         private Timer cooldownTimer;
         private bool usable = false;
+
+
 
         [SerializeField]
         GameObject projectile;
