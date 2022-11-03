@@ -88,7 +88,7 @@
                 {
                     "name": "",
                     "id": "a1fd95c9-557a-4018-bb65-1428f05cb659",
-                    "path": "<Keyboard>/leftArrow",
+                    "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
