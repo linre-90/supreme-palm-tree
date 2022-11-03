@@ -9,7 +9,7 @@ namespace Footkin.Controller
         [SerializeField] GameObject deathVFX;
 
         CharacterController characterController;
-        float lifetime = 2f;
+        float lifetime = .75f;
         int damage;
         Vector3 Direction;
 
