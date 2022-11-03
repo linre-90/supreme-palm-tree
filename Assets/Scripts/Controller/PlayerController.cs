@@ -9,21 +9,17 @@ namespace Footkin.Controller
     {
         PlayerMove playerMove;
         PlayerAttack playerAttack;
-        
-
-        int health;
         bool inputAlreadyUnbind = false;
 
         public override void ReceiveDamage(int damage)
         {
-            health -= damage;
-            if(health <= 0)
+            characterData.Health -= damage;
+            if(characterData.Health <= 0)
             {
                 playerAttack.UnBindInput();
                 playerMove.UnBindInput();
                 Debug.Log("TODO: Show again quit button");
             }
-            Debug.Log(health);
         }
 
         private void Awake()
@@ -32,7 +28,6 @@ namespace Footkin.Controller
             playerMove.BindInput();
             playerAttack = GetComponent<PlayerAttack>();
             playerAttack.BindInput();
-            health = characterData.Health;
         }
 
         private void OnDestroy()
@@ -46,9 +41,9 @@ namespace Footkin.Controller
 
         public override bool ReceiveHealth(int amount)
         {
-            if(this.health + amount <= 100)
+            if(characterData.Health + amount <= 100)
             {
-                this.health += amount;
+                characterData.Health += amount;
                 return true;
             }
             return false;
